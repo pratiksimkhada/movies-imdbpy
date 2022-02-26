@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+        {% block content %}
+
+          
+    <div class="padding">
+      <h1>This is Home page</h1>
+      <h1> {{id}} </h1>
+
+    </div>
+    
+    <form method="POST" >
+      <div class="center filter-btn padding">
+        <input type="text" name="category" placeholder="Enter Genre">
+        <input type="text" name="start_year" placeholder="Start Year">
+        <input type="text" name="end_year" placeholder="End Year">
+        <input type="submit" value="Filter">
+
+      </div>
+    </form>
+  
+  {% endblock %}
+
+
+
+
+

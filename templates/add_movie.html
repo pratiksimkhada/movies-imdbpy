@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+        {% block content %}
+
+
+    <div class="padding">
+      <h1>Add a Movie</h1>
+    </div>
+    
+    <form method="POST" >
+      <div class="center filter-btn padding">
+        <div class="padding">
+          <input type="text" name="movie_title" placeholder="Enter Movie Title">
+          
+        </div>
+   
+        <div class="padding">
+          <input type="text" name="genre" placeholder="Enter Genre">
+          
+        </div>
+   
+        <div class="padding">
+          <input type="text" name="released_year" placeholder="Enter Released Year">
+          </br>
+          {% if errmsg %}
+
+          <strong> {{errmsg}} </strong>
+          {% endif %}
+        </div>
+  
+
+        <input type="submit" value="Add Movie">
+
+      </div>
+    </form>
+
+
+
+
+  {% endblock %}

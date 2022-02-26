@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+        {% block content %}
+
+    
+    
+    <div>
+      <table class="table">
+
+        <tr>
+          <td>Movie Title</td>
+          <td>{{ movie['title'] }}</td>
+        </tr>
+        <tr>
+          <td>Released Year</td>
+          <td>{{ movie['year'] }}</td>
+        </tr>
+        <tr>
+          <td>Genres</td>
+          <td>
+            {% for i in movie['genre'] %}
+            <span>{{ i }}</span>
+            {% endfor %}
+          </td>
+        </tr>
+        <tr>
+          <td>Actors</td>
+          {# <td>{{ movie['cast'][:10] }}</td> #}
+            <td>{% for item in movie['cast'][:10] %}
+              {{item}}, 
+            {% endfor %}</td>
+        </tr>
+        <tr>
+          <td>Movie Synopsis</td>
+          <td>{{ movie['plot'][0] }}</td>
+        </tr>
+      </table>
+
+
+    </div>
+
+  {% endblock %}

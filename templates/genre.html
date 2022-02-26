@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+        {% block content %}
+
+
+
+
+    <div class="padding">
+      <h1>This is genre page</h1>
+    </div>
+
+    
+    <div class="table">
+      <table class="">
+        <tr>
+          <th>S.N.</th>
+          <th>Movie Title</th>
+          <th>Genre</th>
+          <th>Released Year</th>
+        </tr>
+        
+            
+
+        {% for g in genre %}
+        <tr>
+          <td>{{g[0]}}</td>
+          <td>{{g[3]}}</td>
+          <td>{{g[2]}}</td>
+          <td>{{g[4]}}</td>
+
+        </tr>
+
+
+        {% endfor %}
+        
+        
+        
+      </table>    
+
+    </div>
+
+  {% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+        {% block content %}
+
+    
+
+    <div>
+      {% for movie in movies %}
+      <div class="item">
+        <div>
+        <label> Movie Title </label><span> <a href="{{ url_for('single_movie', movie_id=movie['movieID']) }}"> {{ movie['title'] }} </a> </span>
+        </div>
+
+        <div>
+        <label> Released Year </label><span> {{ movie['year'] }} </span>
+        </div>
+
+
+      </div>
+      {% endfor %}
+    </div>
+
+
+
+  {% endblock %}
