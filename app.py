@@ -1,22 +1,65 @@
 from flask import Flask, render_template, url_for, redirect, request
-import csv
+import csv, re
 import operator
 from datetime import datetime
 
-
-
-
 app = Flask(__name__)
+
+# def categories():
+#     with open("test.csv", "r") as file:
+#         reader = csv.reader(file)
+#         list_gen = []
+        
+#         for row in reader:
+#             lis = re.sub(r"['',+]","", row[2])
+#             final = str(lis)[1:-1] 
+#             gen_list = final.split(" ")
+#             # print(type(gen_list))
+
+#             # print(gen_list)
+#             for item in gen_list:
+#                 list_gen.append(item)
+
+        
+#         final = set(list_gen)
+        
+
 
 @app.route("/", methods=["GET","POST"])
 def home():
+    with open("test.csv", "r") as file:
+        reader = csv.reader(file)
+        list_gen = []
+        
+        for row in reader:
+            lis = re.sub(r"['',+]","", row[2])
+            final = str(lis)[1:-1] 
+            gen_list = final.split(" ")
+            # print(type(gen_list))
+
+            # print(gen_list)
+            for item in gen_list:
+                list_gen.append(item)
+
+        
+        final = set(list_gen)
+        
+        year_range = range(1976,2022)
+
+
     if request.method == "POST":
         category = request.form.get('category')
         start_year= request.form.get('start_year')
         end_year = request.form.get('end_year')
         return redirect(url_for("genre", category=category, start_year=start_year, end_year=end_year))
-    
-    return render_template('home.html')
+        
+
+    with open('test.csv', 'r') as file:
+       reader = csv.reader(file)
+       sorted_list = sorted(reader, key=operator.itemgetter(4), reverse=True)
+
+
+    return render_template('home.html', movies=sorted_list, final = final, year_range=year_range)
 
 
 @app.route("/movies/")

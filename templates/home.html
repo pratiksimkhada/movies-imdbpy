@@ -4,19 +4,81 @@
           
     <div class="padding">
       <h1>This is Home page</h1>
-      <h1> {{id}} </h1>
 
     </div>
     
     <form method="POST" >
       <div class="center filter-btn padding">
-        <input type="text" name="category" placeholder="Enter Genre">
-        <input type="text" name="start_year" placeholder="Start Year">
-        <input type="text" name="end_year" placeholder="End Year">
-        <input type="submit" value="Filter">
+        <div>
+          <select name="category">
+            <option value="disabled">Select a Genre</option>
+            {% for genre in final %}
+            <option value="{{ genre }}">{{genre}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div>
+          <select name="start_year">
+            <option value="disabled">Select start year</option>
+
+            {% for year in year_range %}
+            <option value="{{ year }}">{{year}}</option>
+            {% endfor %}
+          </select>
+          {# <input type="text" name="start_year" placeholder="Start Year">
+           <span>Starting from 1970</span>#}
+        </div>
+        <div>
+          <select name="end_year">
+            <option value="disabled">Select start year</option>
+
+            {% for year in year_range %}
+            <option value="{{ year }}">{{year}}</option>
+            {% endfor %}
+          </select>
+{#           <input type="text" name="end_year" placeholder="End Year">
+          <span>End year 2022</span>
+ #}        </div>
+        <input type="submit" class="button" value="Filter">
 
       </div>
     </form>
+
+
+
+    <div class="table">
+      <h2>Latest Movies</h2>
+
+      <table class="">
+        <tr>
+          <th>S.N.</th>
+          <th>Movie Title</th>
+          <th>Genre</th>
+          <th>Released Year</th>
+          <th>Action</th>
+
+        </tr>
+        
+            
+
+        {% for mov in movies %}
+        <tr>
+          <td>{{mov[0]}}</td>
+          <td>{{mov[3]}}</td>
+          <td>{{mov[2]}}</td>
+          <td>{{mov[4]}}</td>
+          <td> <a href="{{ url_for('delete_movie', movie_id = mov[0]) }}"> Delete </a> </td>
+          
+        </tr>
+
+
+        {% endfor %}
+        
+        
+        
+      </table>    
+
+    </div>
   
   {% endblock %}
 
